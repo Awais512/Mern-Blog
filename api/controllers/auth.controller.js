@@ -40,6 +40,15 @@ export const signup = async (req, res, next) => {
   }
 };
 
+/**
+ * Sign in the user.
+ *
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ * @param {function} next - The next middleware function.
+ * @return {Promise} Promise representing the completion of sign in process.
+ */
+
 export const signin = async (req, res, next) => {
   const { email, password } = req.body;
 
