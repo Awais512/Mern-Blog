@@ -13,18 +13,21 @@ export const signup = async (req, res, next) => {
     email === "" ||
     password === ""
   ) {
-    next(errorHandler(400, "All fields are required..."));
+    next(errorHandler(400, "All fields are required"));
   }
 
-  const hashedPassword = await bcrypt.hashSync(password, 10);
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
+  const newUser = new User({
+    username,
+    email,
+    password: hashedPassword,
+  });
 
   try {
-    const newUser = new User({ username, email, password: hashedPassword });
-
     await newUser.save();
-    res.send("Sign up successfull");
+    res.json("Signup successful");
   } catch (error) {
-    // res.status(500).json({ message: error.message });
     next(error);
   }
 };
