@@ -22,7 +22,7 @@ const FooterLinks = () => {
         <Footer.Title title="Follow us" />
         <Footer.LinkGroup col>
           <Footer.Link
-            href="https://www.github.com/sahandghavidel"
+            href="https://www.github.com/Awais512"
             target="_blank"
             rel="noopener noreferrer"
           >
