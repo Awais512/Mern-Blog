@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 
 //Routes importing
 import userRoutes from "./routes/user.route.js";
@@ -12,6 +13,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 // Database Connections
 mongoose
