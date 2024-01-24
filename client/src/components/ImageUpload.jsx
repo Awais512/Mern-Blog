@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { Alert } from "flowbite-react";
 
@@ -12,15 +13,13 @@ import {
 } from "firebase/storage";
 import { app } from "../firebase";
 
-const ImageUpload = () => {
+const ImageUpload = ({ formData, setFormData, setImageFileUploading }) => {
   const { currentUser } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
   const [imageFileUploadError, setImageFileUploadError] = useState(null);
 
-  const [imageFileUploading, setImageFileUploading] = useState(false);
-  const [formData, setFormData] = useState({});
   const filePickerRef = useRef();
 
   const handleImageChange = (e) => {
@@ -122,6 +121,12 @@ const ImageUpload = () => {
       )}
     </>
   );
+};
+
+ImageUpload.propTypes = {
+  formData: PropTypes.any.isRequired,
+  setFormData: PropTypes.func.isRequired,
+  setImageFileUploading: PropTypes.func.isRequired,
 };
 
 export default ImageUpload;
