@@ -1,8 +1,17 @@
 import PropTypes from "prop-types";
 import { Table } from "flowbite-react";
 import { Link } from "react-router-dom";
+import GenericModal from "./GenericModal";
 
-const PostTable = ({ userPosts, showMore, handleShowMore }) => {
+const PostTable = ({
+  userPosts,
+  showMore,
+  handleShowMore,
+  showModal,
+  setShowModal,
+  handleDeletePost,
+  setPostIdToDelete,
+}) => {
   return (
     <>
       <Table>
@@ -39,7 +48,13 @@ const PostTable = ({ userPosts, showMore, handleShowMore }) => {
               </Table.Cell>
               <Table.Cell>{post.category}</Table.Cell>
               <Table.Cell>
-                <span className="font-medium bg-rose-500 text-white p-1.5 rounded-md hover:underline cursor-pointer">
+                <span
+                  onClick={() => {
+                    setShowModal(true);
+                    setPostIdToDelete(post._id);
+                  }}
+                  className="font-medium bg-rose-500 text-white p-1.5 rounded-md hover:underline cursor-pointer"
+                >
                   Delete
                 </span>
               </Table.Cell>
@@ -63,6 +78,12 @@ const PostTable = ({ userPosts, showMore, handleShowMore }) => {
           Show more
         </button>
       )}
+      <GenericModal
+        showModal={showModal}
+        onClose={() => setShowModal(false)}
+        onConfirm={handleDeletePost}
+        title={"Delete Posts"}
+      />
     </>
   );
 };
@@ -71,6 +92,10 @@ PostTable.propTypes = {
   userPosts: PropTypes.array.isRequired,
   showMore: PropTypes.bool.isRequired,
   handleShowMore: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
+  handleDeletePost: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+  setPostIdToDelete: PropTypes.func.isRequired,
 };
 
 export default PostTable;
