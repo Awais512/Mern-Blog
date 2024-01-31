@@ -53,14 +53,14 @@ const PostTable = ({
                     setShowModal(true);
                     setPostIdToDelete(post._id);
                   }}
-                  className="font-medium bg-rose-500 text-white p-1.5 rounded-md hover:underline cursor-pointer"
+                  className="font-medium bg-rose-500 hover:bg-rose-900 transition text-white p-1.5 rounded-md  cursor-pointer"
                 >
                   Delete
                 </span>
               </Table.Cell>
               <Table.Cell>
                 <Link
-                  className="bg-teal-500 dark:bg-[#a5f3fc] dark:text-black text-white p-1.5 rounded-md hover:underline cursor-pointer"
+                  className="bg-teal-500 hover:bg-teal-900 transition dark:bg-[#a5f3fc] dark:text-black text-white p-1.5 rounded-md hover:underline cursor-pointer"
                   to={`/update-post/${post._id}`}
                 >
                   <span>Edit</span>

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Table } from "flowbite-react";
-import { Link } from "react-router-dom";
 import GenericModal from "./GenericModal";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
 const UserTable = ({
   users,
@@ -19,6 +19,7 @@ const UserTable = ({
           <Table.HeadCell>Date Created</Table.HeadCell>
           <Table.HeadCell>User Image</Table.HeadCell>
           <Table.HeadCell>Username</Table.HeadCell>
+          <Table.HeadCell>Email</Table.HeadCell>
           <Table.HeadCell>Admin</Table.HeadCell>
           <Table.HeadCell>Delete</Table.HeadCell>
         </Table.Head>
@@ -29,23 +30,24 @@ const UserTable = ({
                 {new Date(user.createdAt).toLocaleDateString()}
               </Table.Cell>
               <Table.Cell>
-                <Link
-                  className="font-medium text-gray-900 dark:text-white"
-                  to={`/user/${user._id}`}
-                >
-                  <img
-                    src={user.profilePicture}
-                    className="w-20 h-10 object-cover bg-gray-500"
-                    alt={user.username}
-                  />
-                </Link>
+                <img
+                  src={user.profilePicture}
+                  className="w-10 h-10 object-cover bg-gray-500 rounded-full"
+                  alt={user.username}
+                />
               </Table.Cell>
-              <Table.Cell>
-                <Link to={`/user/${user._id}`}>{user.username}</Link>
-              </Table.Cell>
+              <Table.Cell>{user.username}</Table.Cell>
+
+              <Table.Cell>{user.email}</Table.Cell>
 
               <Table.Cell>
-                <span>{user.isAdmin ? "Yes" : "No"}</span>
+                <span>
+                  {user.isAdmin ? (
+                    <FaCheck className="text-green-500" />
+                  ) : (
+                    <FaTimes className="text-red-500" />
+                  )}
+                </span>
               </Table.Cell>
               <Table.Cell>
                 <span
@@ -53,7 +55,7 @@ const UserTable = ({
                     setShowModal(true);
                     setUserIdToDelete(user._id);
                   }}
-                  className="font-medium bg-rose-500 text-white p-1.5 rounded-md hover:underline cursor-pointer"
+                  className="font-medium bg-rose-500 hover:bg-rose-900 transition text-white p-1.5 rounded-md cursor-pointer"
                 >
                   Delete
                 </span>
