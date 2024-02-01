@@ -2,7 +2,6 @@ import Proptypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function PostCard({ post }) {
-  console.log(post);
   return (
     <div className="group relative w-full border h-[400px] overflow-hidden rounded-lg sm:w-[430px] border-teal-500 hover:border-2 transition-all">
       <Link to={`/post/${post.slug}`}>
