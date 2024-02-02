@@ -138,8 +138,10 @@ function UpdatePost() {
           >
             <option value="uncategorized">Select a category</option>
             <option value="javascript">Javascript</option>
-            <option value="reactjs">React</option>
+            <option value="typescript">Typescript</option>
+            <option value="reactjs">React.js</option>
             <option value="nextjs">Next.js</option>
+            <option value="nodejs">Node.js</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
